@@ -5,16 +5,16 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface FoodApi {
+interface RecipeApi {
     @GET("recipes/random")
-    suspend fun getRandomRecipes(@Query("number") number: Int?, @Query("tags") tags: String?): List<RecipeInformationDto>
+    suspend fun getRandomRecipes(@Query("number") number: Int?, @Query("tags") tags: String?): RecipeInformationData
 
     @GET("recipes/complexSearch")
     suspend fun searchRecipes(
         @Query("diet") diet: String?,
         @Query("equipment") equipment: String?,
         @Query("type") type: String
-    ): List<RecipeResultDto>
+    ): RecipeResultDto
 
     @GET("recipes/{id}/information")
     suspend fun getRecipeDetails(@Path("id") id: Int): RecipeInformationDto
@@ -24,7 +24,7 @@ interface FoodApi {
     suspend fun getSimilarRecipes(@Path("id") id: Int): List<SimilarRecipeDto>
 
     @GET("recipes/{id}/ingredientWidget.json")
-    suspend fun getRecipeIngredients(@Path("id") id: Int);
+    suspend fun getRecipeIngredients(@Path("id") id: Int): IngredientsData;
 
     // Ingredients search
     @GET("food/ingredients/search")
@@ -49,9 +49,9 @@ interface FoodApi {
     @GET("recipes/findByIngredients")
     suspend fun recipeByIngredients(
         @Query("ingredients") ingredients: String,
-        @Query("number") number: String,
-        @Query("limitLicense") limitLicense: Int,
-        @Query("ranking") ranking: Int,
-        @Query("ignorePantry") ignorePantry: Boolean,
+        @Query("number") number: String?,
+        @Query("limitLicense") limitLicense: Int?,
+        @Query("ranking") ranking: Int?,
+        @Query("ignorePantry") ignorePantry: Boolean?,
     ): List<RecipeByIngredientDto>
 }
