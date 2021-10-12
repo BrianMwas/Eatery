@@ -61,6 +61,9 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.4.0-beta01'
     implementation("io.coil-kt:coil:1.4.0")
 
+    implementation 'javax.inject:javax.inject:1'
+
+
 
     implementation 'com.google.code.gson:gson:2.8.8'
 
