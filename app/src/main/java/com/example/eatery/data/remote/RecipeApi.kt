@@ -13,7 +13,7 @@ interface RecipeApi {
     suspend fun searchRecipes(
         @Query("diet") diet: String?,
         @Query("equipment") equipment: String?,
-        @Query("type") type: String
+        @Query("type") type: String?
     ): RecipeResultDto
 
     @GET("recipes/{id}/information")

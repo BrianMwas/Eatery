@@ -10,7 +10,7 @@ import com.example.eatery.domain.model.SimilarRecipe
 
 interface RecipeRepository {
     suspend fun getRecipes(num: Int, tags: List<String>? = null): List<RecipeInformation>
-    suspend fun getRecipeDetails(id: Int): RecipeInformationDto
+    suspend fun getRecipeDetails(id: Int): RecipeInformation
     suspend fun getSimilarRecipes(recipeId: Int): List<SimilarRecipe>;
     suspend fun searchRecipe(
         diet: String?,

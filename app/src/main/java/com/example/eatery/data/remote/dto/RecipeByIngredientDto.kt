@@ -25,3 +25,7 @@ fun RecipeByIngredientDto.toRecipeByIngredient() : RecipeByIngredient {
         image = image
     )
 }
+
+fun List<RecipeByIngredientDto>.toRecipeIngredients() : List<RecipeByIngredient> {
+    return this.map { it.toRecipeByIngredient() }
+}

@@ -1,10 +1,7 @@
 package com.example.eatery.data.repository
 
 import com.example.eatery.data.remote.RecipeApi
-import com.example.eatery.data.remote.dto.RecipeInformationDto
-import com.example.eatery.data.remote.dto.toRecipe
-import com.example.eatery.data.remote.dto.toRecipeInformation
-import com.example.eatery.data.remote.dto.toSimilarRecipe
+import com.example.eatery.data.remote.dto.*
 import com.example.eatery.domain.model.RecipeByIngredient
 import com.example.eatery.domain.model.RecipeInformation
 import com.example.eatery.domain.model.Recipes
@@ -18,10 +15,10 @@ class RecipeRepositoryImpl @Inject constructor(
 ): RecipeRepository {
 
     override suspend fun getRecipes(num: Int, tags: List<String>?): List<RecipeInformation> {
-        return recipeApi.getRandomRecipes(num, tags).map { it.recipes.toRecipes() }
+        return recipeApi.getRandomRecipes(num, tags.toString()).recipes.map { it.toRecipeInformation() }
     }
 
-    override suspend fun getRecipeDetails(id: Int): RecipeInformationDto {
+    override suspend fun getRecipeDetails(id: Int): RecipeInformation {
         return recipeApi.getRecipeDetails(id).toRecipeInformation()
     }
 
@@ -38,6 +35,6 @@ class RecipeRepositoryImpl @Inject constructor(
     }
 
     override suspend fun searchRecipeByIngredient(ingredient: String, number: String?, limitLicense: Int?, ranking: Int?, ignorePantry: Boolean?): List<RecipeByIngredient> {
-        return recipeApi.recipeByIngredients(ingredients = ingredient, number = number, limitLicense, ranking, ignorePantry).map { it.toRecipeByIngredient() }
+        return recipeApi.recipeByIngredients(ingredients = ingredient, number = number, limitLicense = limitLicense, ranking = ranking, ignorePantry = ignorePantry).toRecipeIngredients()
     }
 }
