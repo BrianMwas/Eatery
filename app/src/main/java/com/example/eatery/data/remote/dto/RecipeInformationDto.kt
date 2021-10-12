@@ -3,6 +3,10 @@ package com.example.eatery.data.remote.dto
 import com.example.eatery.domain.model.RecipeInformation
 import com.google.gson.annotations.SerializedName
 
+data class RecipeInformationData(
+    val recipes: List<RecipeInformationDto>
+)
+
 data class RecipeInformationDto(
     val aggregateLikes: Int,
     val analyzedInstructions: List<Any>,
