@@ -18,4 +18,5 @@ interface RecipeRepository {
         type: String?
     ): List<Recipes>
     suspend fun searchRecipeByIngredient(ingredient: String, number: String?, limitLicense: Int?, ranking: Int?, ignorePantry: Boolean?): List<RecipeByIngredient>
+    suspend fun getRecipeBYIngredient(searchTerm: String, num: Int, minProteinPercent: Int?, maxProteinPercent: Int?, maxFatPercent: Int?, minFatPercent: Int?, carbsPresent: Int?): List<RecipeByIngredient>
 }
