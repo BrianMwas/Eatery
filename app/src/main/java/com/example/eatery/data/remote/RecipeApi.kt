@@ -30,12 +30,12 @@ interface RecipeApi {
     @GET("food/ingredients/search")
     suspend fun getIngredientsSearch(
         @Query("query") query: String,
-        @Query("minProteinPercent") minProteinPercent: Int,
-        @Query("maxProteinPercent") maxProteinPercent: Int,
-        @Query("maxFatPercent") maxFatPercent: Int,
-        @Query("minFatPercent") minFatPercent: Int,
+        @Query("minProteinPercent") minProteinPercent: Int?,
+        @Query("maxProteinPercent") maxProteinPercent: Int?,
+        @Query("maxFatPercent") maxFatPercent: Int?,
+        @Query("minFatPercent") minFatPercent: Int?,
         @Query("number") num: Int,
-        @Query("minCarbsPercent") carbsPercent: Int,
+        @Query("minCarbsPercent") carbsPercent: Int?,
     ): List<RecipeByIngredientDto>
 
     @GET("recipes/convert")
