@@ -30,7 +30,6 @@ class RecipeListViewModel @Inject constructor(
                 }
                 is Resource.Loading -> {
                     _state.value = RecipeListState(isLoading = true)
-
                 }
                 is Resource.Error -> {
                     _state.value = RecipeListState(error = result.message ?: "An unexpected error occurred")
