@@ -25,7 +25,7 @@ fun RecipeListItem(
 ) {
     Card(
         elevation = 1.dp,
-        shape = MaterialTheme.shapes.medium,
+        shape = MaterialTheme.shapes.small,
         backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxWidth()
@@ -34,8 +34,12 @@ fun RecipeListItem(
     ) {
             Column {
                 Image(
-                    painter = rememberImagePainter(data = "https://source.unsplash.com/random/food",
-                        imageLoader = ImageLoader.Builder(LocalContext.current).build(),
+                    painter = rememberImagePainter(
+                        data = "https://source.unsplash.com/random/food",
+                        imageLoader = ImageLoader.Builder(LocalContext.current)
+                            .crossfade(true)
+                            .crossfade(1200)
+                            .build(),
                         builder = {
                             crossfade(true)
                         }
