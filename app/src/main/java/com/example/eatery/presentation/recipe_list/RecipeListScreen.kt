@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.eatery.presentation.Screen
 import com.example.eatery.presentation.recipe_list.components.RecipeListItem
+import com.example.eatery.presentation.utils.Loading
 
 @ExperimentalMaterialApi
 @Composable
@@ -45,7 +46,7 @@ fun RecipeListScreen(
             }
         }
         if(state.isLoading) {
-
+            Loading()
         }
     }
 }
